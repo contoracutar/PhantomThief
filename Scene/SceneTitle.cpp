@@ -9,7 +9,7 @@ Scene* SceneTitle::create()
     // 1. super init first
     auto scene = Scene::create();
     if ( !scene ){
-        return false;
+        return nullptr;
     }
     
     // 'layer' is an autorelease object

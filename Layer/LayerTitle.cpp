@@ -1,5 +1,6 @@
 #include "LayerTitle.h"
 #include "LayerSelect.h"
+#include "Player.h"
 #include "../Scene/SceneSelect.h"
 
 USING_NS_CC;
@@ -60,6 +61,8 @@ bool LayerTitle::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
+    addChild(Player::create());
+    
     return true;
 }
 void LayerTitle::update (float delta)
@@ -76,9 +79,9 @@ void LayerTitle::menuCloseCallback(Ref* pSender)
 #endif
 
 //    Director::getInstance()->end();
-	Director::getInstance()->replaceScene(SceneSelect::create());
+	Director::getInstance()->replaceScene(TransitionFade::create(3.0f, SceneSelect::create(), Color3B::WHITE));
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
+//    exit(0);
 #endif
 }
