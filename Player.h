@@ -10,10 +10,7 @@
 #define __PlayGame__Player__
 
 #include <stdio.h>
-#include "Box2D/Box2D.h"
-#include "GL-ESRender.h"
 
-#define PTM_RATIO 32.0
 USING_NS_CC;
 
 class Player : public cocos2d::Layer {
@@ -43,7 +40,6 @@ private:
     DIR dir, oldDir;
     STATE state, oldState;
     Sprite *player;
-    Vec2 velocity = Vec2::ZERO;
     Vec2 standPos = Vec2::ZERO;
     void AnimationRun(std::string name);
     void update(float delta);
@@ -75,9 +71,9 @@ private:
     }
     Vec2 posToTileCoordinate(TMXTiledMap *m, Size s, Point point);
     Vec2 tileCoordinateToPos(TMXTiledMap *m, Size s, Point point);
-    bool CollisionBox(Sprite *p, TMXTiledMap *m);
-    Sprite* addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate);
 public:
+    Vec2 velocity = Vec2::ZERO;
+    CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CREATE_FUNC(Player);
 };
 
